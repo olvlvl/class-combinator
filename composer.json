@@ -1,0 +1,19 @@
+{
+	"name": "olvlvl/class-combinator",
+	"type": "library",
+	"description": "Combine classes into a single file",
+	"license": "BSD-3-Clause",
+	"authors": [
+		{
+			"name": "Olivier Laviale",
+			"email": "olivier.laviale@gmail.com",
+			"homepage": "https://olvlvl.com/",
+			"role": "Developer"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"olvlvl\\ClassCombinator\\": "src"
+		}
+	}
+}
