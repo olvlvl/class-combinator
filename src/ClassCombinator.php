@@ -17,7 +17,7 @@ namespace olvlvl\ClassCombinator;
 class ClassCombinator
 {
 	/**
-	 * @var ClassDiscriminator
+	 * @var callable
 	 */
 	private $discriminator;
 
@@ -32,12 +32,12 @@ class ClassCombinator
 	private $fileCombinator;
 
 	/**
-	 * @param ClassDiscriminator|null $discriminator
+	 * @param callable|null $discriminator
 	 * @param WeightComputer|null $weightComputer
 	 * @param FileCombinator|null $fileCombinator
 	 */
 	public function __construct(
-		ClassDiscriminator $discriminator = null,
+		callable $discriminator = null,
 		WeightComputer $weightComputer = null,
 		FileCombinator $fileCombinator = null
 	) {
