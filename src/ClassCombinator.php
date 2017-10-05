@@ -19,7 +19,7 @@ class ClassCombinator
 	/**
 	 * @var callable
 	 */
-	private $discriminator;
+	private $provider;
 
 	/**
 	 * @var WeightComputer
@@ -32,29 +32,28 @@ class ClassCombinator
 	private $fileCombinator;
 
 	/**
-	 * @param callable|null $discriminator
+	 * @param callable|null $provider
 	 * @param WeightComputer|null $weightComputer
 	 * @param FileCombinator|null $fileCombinator
 	 */
 	public function __construct(
-		callable $discriminator = null,
+		callable $provider,
 		WeightComputer $weightComputer = null,
 		FileCombinator $fileCombinator = null
 	) {
-		$this->discriminator = $discriminator ?: new ClassDiscriminator();
+		$this->provider = $provider;
 		$this->weightComputer = $weightComputer ?: new WeightComputer();
 		$this->fileCombinator = $fileCombinator ?: new FileCombinator();
 	}
 
 	/**
-	 * @param string $root Project's root.
 	 * @param callable $runner Execute a part of your application.
 	 *
 	 * @return string
 	 */
-	public function __invoke($root, callable $runner)
+	public function __invoke($root)
 	{
-		$classes = ($this->discriminator)($runner);
+		$classes = ($this->provider)();
 
 		/* @var $reflections \ReflectionClass[] */
 

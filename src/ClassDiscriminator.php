@@ -17,17 +17,28 @@ namespace olvlvl\ClassCombinator;
 class ClassDiscriminator
 {
 	/**
+	 * @var callable
+	 */
+	private $runner;
+
+	/**
 	 * @param callable $runner
-	 *
+	 */
+	public function __construct(callable $runner)
+	{
+		$this->runner = $runner;
+	}
+
+	/**
 	 * @return string[]
 	 */
-	public function __invoke(callable $runner)
+	public function __invoke()
 	{
 		$initial_classes = get_declared_classes();
 		$initial_traits = get_declared_traits();
 		$initial_interfaces = get_declared_interfaces();
 
-		$runner();
+		($this->runner)();
 
 		$final_classes = get_declared_classes();
 		$final_traits = get_declared_traits();
