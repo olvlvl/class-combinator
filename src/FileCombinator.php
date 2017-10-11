@@ -27,7 +27,9 @@ class FileCombinator
 			return substr($path, $root_length);
 		};
 
-		$imploded_files = ' * ' . implode("\n * ", array_map($strip_root, $files));
+		$imported_files = array_map($strip_root, $files);
+		sort($imported_files);
+		$imploded_files = ' * ' . implode("\n * ", $imported_files);
 		$count = count($files);
 
 		$combined = <<<EOT
