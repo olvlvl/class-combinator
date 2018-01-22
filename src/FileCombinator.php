@@ -58,7 +58,7 @@ EOT;
 
 				list($token_id, $token_value) = $token;
 
-				if (in_array($token_id, [T_CLOSE_TAG, T_COMMENT, T_OPEN_TAG])) {
+				if (in_array($token_id, [T_CLOSE_TAG, T_COMMENT, T_DOC_COMMENT, T_OPEN_TAG])) {
 					continue;
 				}
 
