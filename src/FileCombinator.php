@@ -78,6 +78,8 @@ EOT;
 				continue;
 			}
 
+            $cleaned = str_replace('declare(strict_types=1);', '', $cleaned);
+
 			$combined .= $cleaned;
 		}
 
